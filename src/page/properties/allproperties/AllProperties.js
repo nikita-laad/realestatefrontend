@@ -1,7 +1,7 @@
 const AllProperties = () => {
   return (
     <div>
-      
+      dd
     </div>
   )
 }
