@@ -1,8 +1,14 @@
+import Property from "./property/Property"
+import Search from "./search/Search"
+import Service from "./service/Service"
+
 const Home = () => {
   return (
-    <div>
-      ddd
-    </div>
+    <>
+    <Search/>
+    <Property/>
+    <Service/>
+    </>
   )
 }
 
