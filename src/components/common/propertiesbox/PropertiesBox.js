@@ -6,18 +6,19 @@ import { NavLink } from 'react-router-dom';
 const PropertiesBox = ({property}) => {
     const {sqft, garage, bedrooms, bathrooms, more_info} = PropertyMessage;//Message
     return (
-        <div className="card listing-preview">
+        <NavLink to={'/details/'+ property.slug} className="text-decoration-none">
+            <div className="card listing-preview">
             <img className="card-img-top" src="img/home-1.jpg" alt=""/>
             <div className="card-img-overlay">
                 <h2>
-                    <span className="badge badge-secondary text-white">{property.price??''}</span>
+                    <span className="badge badge-secondary text-white">{property.price ? "₹" + property.price.toLocaleString("en-IN"): 0}</span>
                 </h2>
             </div>
             <div className="card-body">
                 <div className="listing-heading text-center">
                     <h4 className="text-primary">{property.name??''}</h4>
                     <p>
-                        <i className="fas fa-map-marker text-secondary"></i> Norwood MA, 02062
+                        <i className="fas fa-map-marker text-secondary"></i> {property.location ?? ''}
                     </p>
                 </div>
                 <hr/>
@@ -52,6 +53,8 @@ const PropertiesBox = ({property}) => {
                 <NavLink to={'/details/'+ property.slug} className="btn btn-primary btn-block">{more_info}</NavLink>
             </div>
         </div>
+        </NavLink>
+        
     );
 }
 export default PropertiesBox;

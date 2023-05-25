@@ -2,31 +2,61 @@ import React from 'react'
 import PropertySlider from './propertyslider/PropertySlider'
 import PropertyFields from './propertyfields/PropertyFields'
 import PropertyRealtor from './propertyraltor/PropertyRealtor'
+import PropertyDetailsLogic from './PropertyDetailsLogic'
+import { Link } from 'react-router-dom'
+import CommonMessage from '../../helper/messages/CommonMessage'
+import Spinner from '../../components/common/spinner/Spinner'
 
 const PropertyDetails = () => {
+  const {propertyDetails, loader} = PropertyDetailsLogic();
+  const {no_data_found} = CommonMessage
   return (
-    <section id="listing" class="py-4">
-    <div class="container">
-      <a href="listings.html" class="btn btn-light mb-4">Back To Listings</a>
-      <div class="row">
-        <div class="col-md-9">
-          
-            <PropertySlider/>
-            <PropertyFields/>
-          <div class="row mb-5">
-            <div class="col-md-12">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia recusandae esse reiciendis officia omnis non rerum dicta
-              cupiditate nostrum molestias deserunt aut minus inventore animi atque, consequuntur ad fugit. Possimus culpa
-              blanditiis repellendus ipsa similique ullam, natus error dolor harum.
+    <>
+      {loader && <Spinner/>}
+      {
+        propertyDetails ? 
+        <section id="listing" className="py-4">
+          <div className="container">
+            <Link to="/properties" className="btn btn-light mb-4">Back To Listings</Link>
+            <div className="row">
+              <div className="col-md-9">
+                  <PropertySlider/>
+                  <PropertyFields properties={propertyDetails}/>
+                {propertyDetails.description && <div className="row mb-5">
+                  <div className="col-md-12">
+                    {propertyDetails.description??''}
+                  </div>
+                </div>}
+              </div>
+              <div className="col-md-3">
+                <PropertyRealtor propertyId={propertyDetails._id} propertyRealtor={propertyDetails.propertyRealtor} propertyName={propertyDetails.name}/>
+              </div>
             </div>
           </div>
+        </section> 
+        :
+        
+        <section className="bg-light py-5">
+        <div className="container">
+        <div className="row">
+            <div className="col-md-12 mx-auto">
+            <div className="card text-center">
+                <div className="card-header bg-primary text-white">
+                <h3 className='mb-0'>
+                {no_data_found}
+                </h3>
+                </div>
+                <div className="card-body">
+                    <p>The requested data does not exist.</p>
+                    <Link to="/" className='btn btn-primary'>Back to home</Link>
+                </div>
+            </div>
+            </div>
         </div>
-        <div class="col-md-3">
-          <PropertyRealtor/>
         </div>
-      </div>
-    </div>
   </section>
+      }
+    </>
   )
 }
 

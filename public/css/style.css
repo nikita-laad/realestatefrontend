@@ -116,3 +116,53 @@ img {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+
+    .text-decoration-none{
+      text-decoration: none !important;
+    }
+    .cursor-pointer{
+      cursor: pointer;
+    }
+/* Model class */
+
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Content */
+.modal_model {
+  background-color: #fff;
+  max-width: 100%;
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.modal_width {
+  width: 550px;
+}
+
+/* Modal Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sidebar .active{
+    background: #10284e;
+    color: #fff;
+}
+
+
+
+
+

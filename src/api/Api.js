@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import { getUserToken } from '../helper/CommonFunction';
+import { getUserToken } from '../helper/CommonFunction';
 
 const createAPI = () => {
   const instanceCreator = () => {
@@ -7,7 +7,7 @@ const createAPI = () => {
       baseURL: process.env.REACT_APP_BASE_URL,
       headers: {
         "Content-Type": "application/json",
-        // "auth-token": getUserToken() ?? ''
+        "auth-token": getUserToken() ?? ''
       }
     });
   };
